@@ -4,6 +4,7 @@
         "vector": "cpp",
         "xstring": "cpp",
         "xutility": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "utility": "cpp"
     }
 }
