@@ -3,16 +3,16 @@ using namespace std;
 
 void ToNeighbors(vector<vector<char>>& stars,int i, int j,int m,int n) {
  
-    stack<pair<int,int>> part{};
-    part.push({i,j});
+    stack<pair<int,int>> counti{};
+    counti.push({i,j});
     stars[i][j] = '#';
     vector<int> Xs ={-1, 0, 1, 0}; 
     vector<int> Ys ={0, -1, 0, 1};
 
-    while (!part.empty()) {
+    while (!counti.empty()) {
         
-        pair<int,int> current = part.top();
-        part.pop();
+        pair<int,int> current = counti.top();
+        counti.pop();
         int r = current.first;
         int c = current.second;
 
@@ -23,7 +23,7 @@ void ToNeighbors(vector<vector<char>>& stars,int i, int j,int m,int n) {
             if ( ir >= 0 && ir < m && jc >= 0 && jc < n){
                 if (stars[ir][jc] == '-')
                 {
-                    part.push({ir,jc});
+                    counti.push({ir,jc});
                     stars[ir][jc] = '#';
                 }
             }
@@ -38,12 +38,14 @@ int main ()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int m,n,n_test = 0;
+    int m=0;
+    int n=0;
+    int npr = 0;
     
 
     while(cin>>m && cin>>n){
         
-        n_test++;
+        npr++;
         string line;
         vector<vector<char>> stars;
 
@@ -72,7 +74,7 @@ int main ()
             }
             
         }
-        cout<<"Case "<<n_test<<": "<<cnt<<"\n";
+        cout<<"Case "<<npr<<": "<<cnt<<"\n";
         
     }
     
