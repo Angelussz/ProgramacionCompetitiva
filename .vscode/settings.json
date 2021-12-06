@@ -7,6 +7,8 @@
         "ios": "cpp",
         "utility": "cpp",
         "istream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "xlocale": "cpp"
     }
 }
