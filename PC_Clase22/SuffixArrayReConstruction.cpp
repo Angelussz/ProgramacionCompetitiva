@@ -3,7 +3,7 @@
 using namespace std;
 
 struct Suffix {
-    int position;
+    int pos;
     string suffix;
 };
 
@@ -13,7 +13,7 @@ const char WILDCARD = '*';
 
 inline bool insert_suffix(string& target, Suffix& s) {
     bool wildcard = false;
-    for (int suffix_pos = 0, target_pos = s.position;
+    for (int suffix_pos = 0, target_pos = s.pos;
          target_pos < target.size();
          suffix_pos++, target_pos++) {
 
@@ -46,42 +46,42 @@ inline bool insert_suffix(string& target, Suffix& s) {
 }
 
 
-string solve(int length, vector<Suffix>& suffixes) {
-    string result;
-    result.resize(length, PLACEHOLDER);
+string solve(int tamanio, vector<Suffix>& suffixes) {
+    string resp;
+    resp.resize(tamanio, PLACEHOLDER);
     
     for (Suffix& s : suffixes) {
-        if (!insert_suffix(result, s)) return "";
+        if (!insert_suffix(resp, s)) return "";
     }
 
-    for (char c : result) {
+    for (char c : resp) {
         if (c == PLACEHOLDER) return "";
     }
     
-    return result;
+    return resp;
 }
 
 int main() {
-    int test_count;
-    cin >> test_count;
+    int casos;
+    cin >> casos;
 
-    while (test_count--) {
-        int length, suffix_count;
-        cin >> length >> suffix_count;
+    while (casos--) {
+        int tamanio, suffix_count;
+        cin >> tamanio >> suffix_count;
 
         vector<Suffix> suffixes;
         suffixes.reserve(suffix_count);
         
         while (suffix_count--) {
             Suffix s;
-            cin >> s.position >> s.suffix;
-            s.position--; // Make position zero indexed.
+            cin >> s.pos >> s.suffix;
+            s.pos--; // Make pos zero indexed.
             suffixes.push_back(s);
         }
         
-        auto result = solve(length, suffixes);
+        auto resp = solve(tamanio, suffixes);
         
-        if (result.empty()) printf("IMPOSSIBLE\n");
-        else printf("%s\n", result.c_str());
+        if (resp.empty()) printf("IMPOSSIBLE\n");
+        else printf("%s\n", resp.c_str());
     }
 }
