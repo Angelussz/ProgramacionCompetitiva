@@ -10,6 +10,7 @@
         "string": "cpp",
         "iosfwd": "cpp",
         "xlocale": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "iostream": "cpp"
     }
 }
